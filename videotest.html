@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>网页端搭建视频流实时播放平台/直播平台</title>
+<style>
+    body {
+        font: 20px Arial,sans-serif;
+        margin: 0px;
+    }
+    header {
+        padding: 20px 20px;
+        background: #acb3b9;
+    }
+    header h1 {
+        font-size: 50px;
+    }
+    .container {
+        width: 100%;
+        background: #f2f2f2;
+    }
+    nav, section {
+        float: left;
+        padding: 20px;
+        min-height: 800px;
+        box-sizing: border-box;
+    }
+    section {
+        width: 80%;
+    }
+    nav {
+        width: 20%;           
+        background: #d4d7dc;
+    }  
+    nav ul {
+        list-style: none;
+        line-height: 30px;
+        padding: 0px;
+    }
+    nav ul li a {
+        color: #333;
+    }
+    .clearfix:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+    footer {
+        background: #acb3b9;          
+        text-align: center;
+        padding: 5px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>网页端搭建视频流实时播放平台/直播平台</h1>
+        </header>
+        <div class="wrapper clearfix">
+            <nav>
+                <ul>
+                    <li>FFmpeg</a></li>
+					<li>SRS</a></li>
+					<li>HTTP-FLV</a></li>		
+					<li>flv.js</a></li>		
+					<li>h5</a></li>						
+                </ul>
+            </nav>
+            <section>
+
+<script src="flv.min.js"></script>
+
+
+<div id="content" style="background-color:#EEEEEE;height:400px;width:500px;float:left;">
+                <h2>street1</h2>
+<video id="videoElement" width="480" height="270" controls loop ></video>
+<script>
+    if (flvjs.isSupported()) {
+        var videoElement = document.getElementById('videoElement');
+        var flvPlayer = flvjs.createPlayer({
+            type: 'flv',
+			hasAudio: false,
+			url: 'http://192.168.1.115:8080/live/livestream.flv'
+        },
+		{
+            enableWorker: false, //不启用分离线程
+            enableStashBuffer: false, //关闭IO隐藏缓冲区
+            reuseRedirectedURL: true, //重用301/302重定向url，用于随后的请求，如查找、重新连接等。
+            autoCleanupSourceBuffer: true //自动清除缓存
+          }
+		);
+        flvPlayer.attachMediaElement(videoElement);
+        flvPlayer.load();
+        flvPlayer.play();
+    }
+</script>
+</div>
+
+
+
+<div id="content" style="background-color:#EEEEEE;height:400px;width:800px;float:right;">
+<h2>street2</h2>
+<script src="flv.min.js"></script>
+<video id="videoElement2" width="480" height="270" controls></video>
+<script>
+    if (flvjs.isSupported()) {
+        var videoElement2 = document.getElementById('videoElement2');
+        var flvPlayer2 = flvjs.createPlayer({
+            type: 'flv',
+			hasAudio: false,
+			isLive:true,
+			url: 'http://192.168.1.115:8080/live/livestream1infer.flv'
+        });
+        flvPlayer2.attachMediaElement(videoElement2);
+        flvPlayer2.load();
+        flvPlayer2.play();
+    }
+</script>
+</div>
+
+<div id="content" style="background-color:#EEEEEE;height:400px;width:500px;float:left;">
+                <h2>street3</h2>
+<video id="videoElement3" width="480" height="270" controls loop ></video>
+<script>
+    if (flvjs.isSupported()) {
+        var videoElement3 = document.getElementById('videoElement3');
+        var flvPlayer3 = flvjs.createPlayer({
+            type: 'flv',
+			hasAudio: false,
+			isLive:true,
+            url: 'http://192.168.1.115:8080/live/livestream2.flv'
+        });
+        flvPlayer3.attachMediaElement(videoElement3);
+        flvPlayer3.load();
+        flvPlayer3.play();
+    }
+</script>
+</div>
+
+
+<div id="content" style="background-color:#EEEEEE;height:400px;width:800px;float:right;">
+<h2>street4</h2>
+<script src="flv.min.js"></script>
+<video id="videoElement4" width="480" height="270" controls></video>
+<script>
+    if (flvjs.isSupported()) {
+        var videoElement4 = document.getElementById('videoElement4');
+        var flvPlayer4 = flvjs.createPlayer({
+            type: 'flv',
+			hasAudio: false,
+			isLive:true,
+            url: 'http://192.168.1.115:8080/live/livestream2.flv'
+        });
+        flvPlayer4.attachMediaElement(videoElement4);
+        flvPlayer4.load();
+        flvPlayer4.play();
+    }
+</script>
+</div>
+
+            </section>
+        </div>
+        <footer>
+            <p>©intel</p>
+        </footer>
+    </div>
+</body>
+</html>
